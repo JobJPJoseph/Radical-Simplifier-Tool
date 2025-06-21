@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JobJPJoseph/Radical-Simplifier-Tool#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "chai-spies": "^1.1.0",
     "mocha": "^11.7.0"
   }
 }
