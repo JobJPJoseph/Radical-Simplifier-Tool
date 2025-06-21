@@ -3,21 +3,24 @@ const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 
-const [simplifyRadical] = require('../lib/simplifyRadical');
+const { Radicals } = require('../lib/simplifyRadical');
 
-describe('Simplify Radical', function () {
+describe('Radicals', function () {
 
-    it('should initialize the function', function () {
-        expect(simplifyRadical).to.exist;
-        expect(simplifyRadical).to.be.a('function');
+    it('should initialize the class', function () {
+        expect(Radicals).to.exist;
     });
 
-    it('should accept single expression', function () {
-        let expression = `${String.fromCharCode(8730)}25`;
-        let radTwentyFiveSpy = chai.spy.on(Object, 'simplifyRadical');
-        simplifyRadical(expression);
+    describe('constructor', function () {
 
-        expect(radTwentyFiveSpy).to.have.been.called.with(expression);
+    });
+
+    describe('isRadical', function () {
+
+    });
+
+    describe('', function () {
+
     });
 
 });
