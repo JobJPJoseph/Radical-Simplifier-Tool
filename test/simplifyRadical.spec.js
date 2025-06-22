@@ -15,11 +15,11 @@ describe('Radicals', function () {
 
     });
 
-    describe('isRadical', function () {
+    describe('getInput', function () {
 
     });
 
-    describe('', function () {
+    describe('isRadical', function () {
 
     });
 
