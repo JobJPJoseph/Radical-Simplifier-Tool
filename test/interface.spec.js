@@ -3,7 +3,7 @@ const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 
-const { Radicals } = require('../lib/simplifyRadical');
+const { Radicals } = require('../lib/interface');
 
 describe('Radicals', function () {
 
