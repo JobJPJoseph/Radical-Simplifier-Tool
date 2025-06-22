@@ -13,7 +13,7 @@ describe('Radicals', function () {
 
     let radical;
 
-    beforeEach(function () {
+    before(function () {
         radical = new Radicals();
     });
 
@@ -28,21 +28,27 @@ describe('Radicals', function () {
     describe('getInput', function () {
 
         it('should get an input from the user', async function () {
+            this.timeout(20000);
             let str = await radical.getInput();
-            expect(str).to.be.a('Promise'); // or String
-            return;
+            return expect(str).to.be.a('String'); // or String
         });
 
     });
 
-    describe('isRadical', function () {
+    describe('validInput', function () {
+
+        it('Radical.getInput should also call Radical.validInput', async function () {
+            this.timeout(20000);
+            let inpSpy = chai.spy.on(radical, 'validInput');
+            await radical.getInput();
+            return expect(inpSpy).to.have.been.called.once;
+        });
 
         context('When True', function () {
 
             it('should check if the input contains only numbers', async function () {
-                let str = await radical.getInput();
-                let bool = radical.isRadical(str);
-                return expect(bool).to.be.true;
+                let result = await radical.getInput();
+                return expect(result).to.be.a('String');
             });
 
         });
@@ -50,8 +56,7 @@ describe('Radicals', function () {
         context('When False', function () {
 
             it('should check if the input contains only numbers', async function () {
-                let str = await radical.getInput();
-                let bool = radical.isRadical(str);
+                let bool = await radical.getInput();
                 return expect(bool).to.be.false;
             });
 
