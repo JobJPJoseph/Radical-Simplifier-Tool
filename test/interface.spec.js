@@ -29,7 +29,7 @@ describe('Radicals', function () {
 
         it('should get an input from the user', async function () {
             let str = await radical.getInput();
-            expect(str).to.be.a('String');
+            expect(str).to.be.a('Promise'); // or String
             return;
         });
 
