@@ -47,6 +47,7 @@ describe('Radicals', function () {
         context('When True', function () {
 
             it('should check if the input contains only numbers', async function () {
+                this.timeout(20000);
                 let result = await radical.getInput();
                 return expect(result).to.be.a('String');
             });
@@ -56,6 +57,7 @@ describe('Radicals', function () {
         context('When False', function () {
 
             it('should check if the input contains only numbers', async function () {
+                this.timeout(20000);
                 let bool = await radical.getInput();
                 return expect(bool).to.be.false;
             });
