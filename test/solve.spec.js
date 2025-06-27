@@ -30,7 +30,9 @@ describe('Solve', function () {
     describe('Convert', function () {
 
         it('should a string input into a number', function () {
-
+            let input = '72';
+            let expected = solve.convert(input);
+            expect(expected).to.equal(72).and.to.be.instanceOf(Number);
         });
 
     });
@@ -38,6 +40,18 @@ describe('Solve', function () {
     describe('Factors', function () {
 
         it('should return a 2-D array where each indices represents [factor, divisor]', function () {
+            let input = 12;
+            let expected = [[2, 6], [3, 4], [4, 3], [6, 2]];
+            let result = solve.factors(input);
+
+            expect(result.length === expected.length).to.be.true;
+
+            for (let i = 0; i < expected.length; i++) {
+                let [factor, divisor] = expected[i];
+                let [arg1, arg2] = result[i];
+
+                expect(arg1 === factor && arg2 === divisor).to.be.true;
+            }
 
         });
 
@@ -45,8 +59,12 @@ describe('Solve', function () {
 
     describe('SolveExpression', function () {
 
-        it('should retrieve the users input and return the result of the expression if applicable.', function () {
+        it('should retrieve the users input and return the result of the expression if applicable.', async function () {
+            this.timeout(20000);
+            let expected = `2${String.fromCharCode(8730),3}`; // if its 12
+            let result = await solve.solveExpression();
 
+            expect(result === expected).to.be.true;
         });
 
     });
