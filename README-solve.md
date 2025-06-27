@@ -10,6 +10,7 @@
     This method will convert the input into a number.
 
 ### Factors
-    This will focus on collecting all the factors from 1 to including n. n being the user's input.
+    This will focus on collecting all the factors from 2 to including n. n being the user's input. The factors need to be in pairs.
 
-###
+### SolveExpression
+    This will focus on solving the expression given input
