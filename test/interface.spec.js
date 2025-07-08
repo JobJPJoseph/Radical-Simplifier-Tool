@@ -37,6 +37,12 @@ describe('Radicals', function () {
 
     describe('validInput', function () {
 
+        let validInputs = new Set(['a','b','c','d','e','f','g','h',
+            'i','j','k','l','m','n','o','p','q',
+            'r','s','t','u','v','w','x','y','z',
+            '0','1','2','3','4','5','6','7','8','9'
+        ]);
+
         it('Radical.getInput should also call Radical.validInput', async function () {
             this.timeout(20000);
             let inpSpy = chai.spy.on(radical, 'validInput');
@@ -46,9 +52,15 @@ describe('Radicals', function () {
 
         context('When True', function () {
 
-            it('should check if the input contains only numbers', async function () {
+            it('should check if the input contains only numbers and letters or a mix', async function () {
                 this.timeout(20000);
                 let result = await radical.getInput();
+
+                for (let i = 0; i < result.length; i++ ) {
+                    let char = result[i];
+                    expect(validInputs.has(char)).to.be.true;
+                }
+
                 return expect(result).to.be.a('String');
             });
 
