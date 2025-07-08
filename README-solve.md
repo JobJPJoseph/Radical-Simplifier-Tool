@@ -14,3 +14,6 @@
 
 ### SolveExpression
     This will focus on solving the expression given input
+
+## Update
+    There are going to a couple new methods and some changes to previously established methods

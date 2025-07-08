@@ -14,3 +14,8 @@
 
 ### validInput
     This method will focus on checking if the input is a radical
+
+## Update
+
+### validInput
+    This will now check to only include numbers or letters
