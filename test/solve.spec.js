@@ -57,15 +57,16 @@ describe('Solve', function () {
 
     });
 
-    describe('SolveExpression', function () {
+    describe('SolveNumber', function () {
 
         it('should retrieve the users input and return the result of the expression if applicable.', async function () {
             this.timeout(20000);
-            let expected = `2${String.fromCharCode(8730)}3`; // if its 12
-            let result = await solve.solveExpression();
+            // let expected = `2${String.fromCharCode(8730)}3`; // if its 12
+            let expected = { wholeNumber: "2", radical: `3`};
+            let result = await solve.solveNumber();
 
             console.log(result, ' : ', expected);
-            return expect(result === expected).to.be.true;
+            return expect(result.wholeNumber === expected.wholeNumber && result.radical === expected.radical).to.be.true;
         });
 
     });
