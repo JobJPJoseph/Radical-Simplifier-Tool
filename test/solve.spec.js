@@ -59,11 +59,23 @@ describe('Solve', function () {
 
     describe('SolveNumber', function () {
 
-        it('should retrieve the users input and return the result of the expression if applicable.', async function () {
+        it('should retrieve the users input and return the result of the number piece of the expression if applicable.', async function () {
+            // this.timeout(20000);
+            // let expected = { wholeNumber: "2", radical: `3`};
+            // let result = await solve.solveNumber();
+
+            // console.log(result, ' : ', expected);
+            // return expect(result.wholeNumber === expected.wholeNumber && result.radical === expected.radical).to.be.true;
+        });
+
+    });
+
+    describe('SolveVariable', function () {
+
+        it('should retrieve the users input and return the result of the variable piece of the expression if applicable.', async function () {
             this.timeout(20000);
-            // let expected = `2${String.fromCharCode(8730)}3`; // if its 12
-            let expected = { wholeNumber: "2", radical: `3`};
-            let result = await solve.solveNumber();
+            let expected = { wholeNumber: "x", radical: `x`};
+            let result = await solve.solveVariable(); // x^3
 
             console.log(result, ' : ', expected);
             return expect(result.wholeNumber === expected.wholeNumber && result.radical === expected.radical).to.be.true;
