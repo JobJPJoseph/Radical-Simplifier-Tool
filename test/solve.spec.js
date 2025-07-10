@@ -59,26 +59,63 @@ describe('Solve', function () {
 
     describe('SolveNumber', function () {
 
-        it('should retrieve the users input and return the result of the number piece of the expression if applicable.', async function () {
-            // this.timeout(20000);
-            // let expected = { wholeNumber: "2", radical: `3`};
-            // let result = await solve.solveNumber();
+        it('should retrieve the users input and return the result of the number piece of the expression if applicable.', function () {
+            this.timeout(20000);
+            let expected = { wholeNumber: "2", radical: `3`};
+            let result = solve.solveNumber('12');
 
-            // console.log(result, ' : ', expected);
-            // return expect(result.wholeNumber === expected.wholeNumber && result.radical === expected.radical).to.be.true;
+            console.log(result, ' : ', expected);
+            expect(result.wholeNumber === expected.wholeNumber && result.radical === expected.radical).to.be.true;
         });
 
     });
 
     describe('SolveVariable', function () {
 
-        it('should retrieve the users input and return the result of the variable piece of the expression if applicable.', async function () {
+        it('should retrieve the users input and return the result of the variable piece of the expression if applicable.', function () {
             this.timeout(20000);
             let expected = { wholeNumber: "x", radical: `x`};
-            let result = await solve.solveVariable(); // x^3
+            let result = solve.solveVariable('x^3'); // x^3
 
             console.log(result, ' : ', expected);
-            return expect(result.wholeNumber === expected.wholeNumber && result.radical === expected.radical).to.be.true;
+            expect(result.wholeNumber === expected.wholeNumber && result.radical === expected.radical).to.be.true;
+        });
+
+    });
+
+    describe('SolveExpression', function () {
+
+        context('should reconignize what part of the expression is a number and a variable', function () {
+
+            it('should call solveNumber', function () {
+                let numSpy = chai.spy.on(solve, 'solveNumber');
+                solve.solveExpression('12x^3');
+                expect(numSpy).to.have.been.called.once;
+                chai.spy.restore(solve, 'solveNumber');
+            });
+
+            it('should call solveVariable', function () {
+                let varSpy = chai.spy.on(solve, 'solveVariable');
+                solve.solveExpression('12x^3');
+                expect(varSpy).to.have.been.called.once;
+                chai.spy.restore(solve, 'solveVariable');
+            });
+
+            it('should return array that with nested objects that represent the solutions of solveNumber and solveVariable', function () {
+                let result = solve.solveExpression('12x^3');
+                let expected = [
+                    { wholeNumber: "2", radical: `3`},
+                    { wholeNumber: "x", radical: `x`}
+                ];
+
+                expect(result.length).to.equal(2);
+
+                for (let i = 0; i < expected.length; i++) {
+                    expect(expected.wholeNumber === result.wholeNumber && expected.radical === result.radical).to.be.true;
+                }
+
+            });
+
         });
 
     });
