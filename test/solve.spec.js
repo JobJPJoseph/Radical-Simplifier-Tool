@@ -120,4 +120,22 @@ describe('Solve', function () {
 
     });
 
+    describe('Format', function () {
+
+        it('should call SolveExpression', function () {
+            let expSpy = chai.spy.on(solve, 'solveExpression');
+            solve.format('12x^3');
+            expect(expSpy).to.have.been.called.once;
+            chai.spy.restore(solve, 'solveExpression');
+        });
+
+        it('should return a string where the result is the input simplified', function () {
+            let expected = `2x${String.fromCharCode(8730)}3x`;
+            let result = solve.format('12x^3');
+
+            expect(expected === result);
+        });
+
+    });
+
 });
